@@ -1,7 +1,10 @@
 package View;
 
+import java.util.Scanner;
+
 public class MenuView {
-    public static void firstChoice(){
+    private static Scanner input = new Scanner(System.in);
+    public static int firstChoice(){
         System.out.println("Choose the key attribute to sort the list: ");
         System.out.println("1 - First name (String)");
         System.out.println("2 - Last name (String)");
@@ -14,10 +17,41 @@ public class MenuView {
         System.out.println("9 - City (String)");
         System.out.println("10 - Stock Code (int)");
         System.out.println("11 - Job (String)");
-        System.out.println("::");
-    }
 
+        return MenuView.getChoice(1, 11);
+    }
+    public static int secondChoice(){
+        System.out.println("Choose the sorter: ");
+        System.out.println("1 - SelectSort");
+        //System.out.println("2 - Desc");
+
+        return MenuView.getChoice(1, 1);
+    }
+    public static int thirdChoice(){
+        System.out.println("Choose the key attribute to sort the list: ");
+        System.out.println("1 - Asc");
+        System.out.println("2 - Desc");
+
+        return MenuView.getChoice(1, 2);
+    }
     public static void divider(){
         System.out.println("\n----------------------\n");
+    }
+
+    private static int getChoice(int min, int max){
+        int choice;
+        while (true) {
+            System.out.printf("::  ");
+            try {
+                choice = input.nextInt();
+                if ( choice >= min && choice <= max) break;
+                else { System.out.printf("Choose a number between %d and %d. Please try again.\n", min, max); }
+            } catch (Exception e) {
+                System.out.println("Error reading user input. Please try again.");
+                input.nextLine();
+            }
+        }
+
+        return choice;
     }
 }

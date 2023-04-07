@@ -1,15 +1,21 @@
 package Model;
 
-public abstract class Sorter<Type> {
-    private Class<Type> type;
-    private Type[] list;
-    private int orderBy;
+import java.util.function.BiFunction;
 
-    public Sorter(Class<Type> type, Type[] list, int orderBy) {
+public abstract class Sorter<Type>{
+    private Class<Type> type;
+    protected Type[] list;
+    protected int orderBy;
+
+    /*public Sorter(Class<Type> type, Type[] list, int orderBy) {
         this.type = type;
         this.list = list;
         this.orderBy = orderBy;
-    }
+    }*/
+
+    public void sort(){}
+
+    public Sorter() {}
 
     public Class<Type> getType() {
         return type;
@@ -34,4 +40,6 @@ public abstract class Sorter<Type> {
     public void setOrderBy(int orderBy) {
         this.orderBy = orderBy;
     }
+
+    public abstract void sort(BiFunction bif);
 }

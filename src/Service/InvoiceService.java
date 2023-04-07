@@ -2,10 +2,13 @@ package Service;
 
 import Model.Invoice;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class InvoiceService {
+public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
+
+    public static BiFunction<Invoice, Invoice, Integer> bif = new InvoiceService();
+
     public static Invoice[] createFromCSV(List<String[]> data){
         Invoice[] invoices = new Invoice[data.size() - 1];
 
@@ -30,5 +33,12 @@ public class InvoiceService {
         }
 
         return invoices;
+    }
+
+    @Override
+    public Integer apply(Invoice invoice, Invoice invoice2) {
+        System.out.println(invoice.getFirstName());
+        System.out.println(invoice2.getFirstName());
+        return 1;
     }
 }
