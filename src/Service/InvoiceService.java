@@ -1,6 +1,7 @@
 package Service;
 
 import Model.Invoice;
+import Utils.CompareValue;
 
 import java.util.List;
 import java.util.function.BiFunction;
@@ -10,10 +11,11 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
     public static BiFunction<Invoice, Invoice, Integer> bif = new InvoiceService();
 
     public static Invoice[] createFromCSV(List<String[]> data){
-        Invoice[] invoices = new Invoice[data.size() - 1];
+        int len =  3 /*data.size()*/;
+        Invoice[] invoices = new Invoice[len - 1];
 
         // variable i initializes to 1 to skip csv header
-        for (int i = 1; i < data.size(); i++) {
+        for (int i = 1; i < len; i++) {
             String[] row = data.get(i);
 
             String firstName = row[0];
@@ -37,8 +39,31 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
 
     @Override
     public Integer apply(Invoice invoice, Invoice invoice2) {
-        System.out.println(invoice.getFirstName());
-        System.out.println(invoice2.getFirstName());
+        Class<?> typePrimaryKey = invoice.getPrimaryKeyValue().getClass();
+
+        if ( typePrimaryKey.equals(String.class) ){
+            String valueInvoice = (String) invoice.getPrimaryKeyValue();
+            String valueInvoice2 = (String) invoice2.getPrimaryKeyValue();
+
+            return CompareValue.compareString(valueInvoice, valueInvoice2);
+        } else if ( typePrimaryKey.equals(Integer.class) ) {
+            int valueInvoice = (int) invoice.getPrimaryKeyValue();
+            int valueInvoice2 = (int) invoice2.getPrimaryKeyValue();
+
+            return CompareValue.compareInteger(valueInvoice, valueInvoice2);
+        } else if ( typePrimaryKey.equals(Double.class) ) {
+            double valueInvoice = (double) invoice.getPrimaryKeyValue();
+            double valueInvoice2 = (double) invoice2.getPrimaryKeyValue();
+
+            return CompareValue.compareDouble(valueInvoice, valueInvoice2);
+        }
+
         return 1;
+    }
+
+    public static void test(BiFunction<Invoice, Invoice, Integer> bif, Invoice[] invoices){
+        for (int i = 0; i < invoices.length; i++){
+            bif.apply(invoices[i], invoices[i]);
+        }
     }
 }

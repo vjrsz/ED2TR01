@@ -1,10 +1,13 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuView {
     private static Scanner input = new Scanner(System.in);
     public static int firstChoice(){
+        IView.divider();
+
         System.out.println("Choose the key attribute to sort the list: ");
         System.out.println("1 - First name (String)");
         System.out.println("2 - Last name (String)");
@@ -20,22 +23,27 @@ public class MenuView {
 
         return MenuView.getChoice(1, 11);
     }
-    public static int secondChoice(){
-        System.out.println("Choose the sorter: ");
-        System.out.println("1 - SelectSort");
-        //System.out.println("2 - Desc");
+    public static int secondChoice(ArrayList<String> names){
+        IView.divider();
 
-        return MenuView.getChoice(1, 1);
+        System.out.println("Choose the sorter: ");
+
+        int i = 1;
+        for (String name : names) {
+            System.out.println(i + " - " + name);
+            i++;
+        }
+
+        return MenuView.getChoice(1, names.size());
     }
     public static int thirdChoice(){
+        IView.divider();
+
         System.out.println("Choose the key attribute to sort the list: ");
         System.out.println("1 - Asc");
         System.out.println("2 - Desc");
 
         return MenuView.getChoice(1, 2);
-    }
-    public static void divider(){
-        System.out.println("\n----------------------\n");
     }
 
     private static int getChoice(int min, int max){

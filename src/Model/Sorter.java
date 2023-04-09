@@ -2,18 +2,12 @@ package Model;
 
 import java.util.function.BiFunction;
 
-public abstract class Sorter<Type>{
+public abstract class Sorter <Type>{
     private Class<Type> type;
     protected Type[] list;
     protected int orderBy;
 
-    /*public Sorter(Class<Type> type, Type[] list, int orderBy) {
-        this.type = type;
-        this.list = list;
-        this.orderBy = orderBy;
-    }*/
-
-    public void sort(){}
+    public abstract String getName();
 
     public Sorter() {}
 
@@ -41,5 +35,5 @@ public abstract class Sorter<Type>{
         this.orderBy = orderBy;
     }
 
-    public abstract void sort(BiFunction bif);
+    public abstract void sort(BiFunction<Type, Type, Integer> bif);
 }

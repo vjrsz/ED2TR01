@@ -1,10 +1,10 @@
 package Service;
 
-import Model.Invoice;
 import Model.SelectSort;
 import Model.Sorter;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +13,24 @@ public class SorterService {
 
     static{
         SorterService.sorters.put(1, SelectSort.class);
+    }
+
+    public static ArrayList<String> getNameSorters() {
+        ArrayList<String> sorterNames = new ArrayList<>();
+
+        for (Integer key : sorters.keySet()) {
+            Class<? extends Sorter> sorterClass = sorters.get(key);
+
+            try {
+                String sorterName = sorterClass.getDeclaredConstructor().newInstance().getName();
+                sorterNames.add(sorterName);
+            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        return sorterNames;
     }
 
     public static Sorter getSorter(int choice) {

@@ -1,5 +1,7 @@
 package Model;
 
+import java.lang.reflect.Field;
+
 public class Invoice {
     private String firstName;
     private String lastName;
@@ -12,6 +14,7 @@ public class Invoice {
     private String city;
     private int stockCode;
     private String job;
+    private static int primaryKey;
 
     public Invoice(String firstName, String lastName, String email, int product_id, int quantity, double amount,
                    String invoiceDate, String address, String city, int stockCode, String job) {
@@ -26,6 +29,33 @@ public class Invoice {
         this.city = city;
         this.stockCode = stockCode;
         this.job = job;
+    }
+
+    public Object getAttribute(int index) throws IllegalAccessException {
+        Field[] attributes = Invoice.class.getDeclaredFields();
+        if (index >= 0 && index < attributes.length) {
+            Field attr = attributes[index];
+            attr.setAccessible(true);
+            return attr.get(this);
+        }
+        return null;
+    }
+
+    public Object getPrimaryKeyValue() {
+        try {
+            return this.getAttribute(this.primaryKey);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /** GETTERS E SETTERS **/
+    public static int getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public static void setPrimaryKey(int primaryKey) {
+        Invoice.primaryKey = primaryKey;
     }
 
     public String getFirstName() {
