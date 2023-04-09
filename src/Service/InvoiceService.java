@@ -11,7 +11,7 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
     public static BiFunction<Invoice, Invoice, Integer> bif = new InvoiceService();
 
     public static Invoice[] createFromCSV(List<String[]> data){
-        int len =  3 /*data.size()*/;
+        int len =  data.size();
         Invoice[] invoices = new Invoice[len - 1];
 
         // variable i initializes to 1 to skip csv header
