@@ -25,7 +25,7 @@ public class InvoiceController {
 
         sorter.sort(InvoiceService.bif);
 
-        CSVController.store(sorter.getList());
+        CSVController.store(sorter.getList(), sorter.getName());
         //InvoiceView.show(sorter.getList());
         //InvoiceService.test(InvoiceService.bif, invoices);
     }

@@ -43,7 +43,9 @@ public class MenuView {
         System.out.println("1 - Asc");
         System.out.println("2 - Desc");
 
-        return MenuView.getChoice(1, 2);
+        int choice = MenuView.getChoice(1, 2) == 2 ? -1 : 1 ;
+
+        return choice;
     }
 
     private static int getChoice(int min, int max){

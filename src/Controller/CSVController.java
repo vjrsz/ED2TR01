@@ -22,8 +22,8 @@ public class CSVController {
         }
     }
 
-    public static <Type> void store(Type[] list){
-        String path = "result.csv";
+    public static <Type> void store(Type[] list, String name){
+        String path = "results\\result_" + name + ".csv";
 
         CSVUtil.write(list, path);
 

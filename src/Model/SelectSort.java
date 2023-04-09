@@ -13,7 +13,7 @@ public class SelectSort <Type> extends Sorter<Type>{
             int min = i;
 
             for (int j = i + 1; j < super.list.length; j++){
-                if ( bif.apply(super.list[j], super.list[min]) == -1 ){
+                if ( bif.apply(super.list[j], super.list[min]) * super.orderBy == -1 ){
                     min = j;
                 }
             }
