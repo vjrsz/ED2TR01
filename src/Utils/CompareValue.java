@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.Date;
+
 public class CompareValue {
 
     public static int compareString(String a, String b){
@@ -22,4 +24,11 @@ public class CompareValue {
         else { return 0; }
     }
 
+    public static int compareDate(Date a, Date b){
+        int res = a.compareTo(b);
+
+        if ( res < 0 ){ return -1;}
+        else if ( res > 0 ){ return 1;}
+        else { return 0; }
+    }
 }

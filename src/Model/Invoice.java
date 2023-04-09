@@ -1,6 +1,9 @@
 package Model;
 
+import Utils.DateUtils;
+
 import java.lang.reflect.Field;
+import java.util.Date;
 
 public class Invoice {
     private String firstName;
@@ -9,7 +12,7 @@ public class Invoice {
     private int product_id;
     private int quantity;
     private double amount;
-    private String invoiceDate;
+    private Date invoiceDate;
     private String address;
     private String city;
     private int stockCode;
@@ -17,7 +20,7 @@ public class Invoice {
     private static int primaryKey;
 
     public Invoice(String firstName, String lastName, String email, int product_id, int quantity, double amount,
-                   String invoiceDate, String address, String city, int stockCode, String job) {
+                   Date invoiceDate, String address, String city, int stockCode, String job) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -106,11 +109,11 @@ public class Invoice {
         this.amount = amount;
     }
 
-    public String getInvoiceDate() {
+    public Date getInvoiceDate() {
         return invoiceDate;
     }
 
-    public void setInvoiceDate(String invoiceDate) {
+    public void setInvoiceDate(Date invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 

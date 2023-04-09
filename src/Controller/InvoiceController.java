@@ -23,7 +23,13 @@ public class InvoiceController {
 
         InvoiceView.running(sorter.getName());
 
+        long timeInit, timeEnd;
+
+        timeInit = System.currentTimeMillis();
         sorter.sort(InvoiceService.bif);
+        timeEnd = System.currentTimeMillis();
+
+        InvoiceView.finalized(timeInit, timeEnd);
 
         CSVController.store(sorter.getList(), sorter.getName());
         //InvoiceView.show(sorter.getList());

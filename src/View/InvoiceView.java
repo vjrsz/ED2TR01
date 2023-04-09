@@ -16,6 +16,15 @@ public class InvoiceView{
         System.out.println("Running " + name + " !");
     }
 
+    public static void finalized(Long init, Long end){
+        IView.divider();
+
+        System.out.println("Sorter Finalized !");
+        System.out.println("- Time init : " + init + "ms");
+        System.out.println("- Time end : " + end + "ms");
+        System.out.println("- Time total : " + (end - init) + "ms");
+    }
+
     public static void show(Invoice[] invoices){
         IView.divider();
         for (Invoice invoice : invoices){

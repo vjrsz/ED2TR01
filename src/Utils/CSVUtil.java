@@ -5,6 +5,7 @@ import Model.Invoice;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CSVUtil <Type> {
@@ -41,9 +42,15 @@ public class CSVUtil <Type> {
                 int i = 0;
                 for(Field attr : attributes){
                     attr.setAccessible(true);
+                    try {
+                        Object value = attr.get(item);
+                        if ( value.getClass().equals(Date.class) ){
+                            printWriter.print(DateUtils.getStringFormat((Date) value, "dd/MM/yyyy"));
 
-                    printWriter.print(attr.get(item));
-
+                        } else{  printWriter.print(value.toString()); }
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
                     if (i != attributes.length - 1) {
                         printWriter.print(",");
                     }else{
@@ -55,8 +62,6 @@ public class CSVUtil <Type> {
             printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
         }
     }
 

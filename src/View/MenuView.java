@@ -15,7 +15,7 @@ public class MenuView {
         System.out.println("4 - Product ID (int)");
         System.out.println("5 - Quantity (int)");
         System.out.println("6 - Amount (double)");
-        System.out.println("7 - Invoice Date (String)");
+        System.out.println("7 - Invoice Date (date)");
         System.out.println("8 - Address (String)");
         System.out.println("9 - City (String)");
         System.out.println("10 - Stock Code (int)");

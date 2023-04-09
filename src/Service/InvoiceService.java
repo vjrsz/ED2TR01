@@ -2,7 +2,9 @@ package Service;
 
 import Model.Invoice;
 import Utils.CompareValue;
+import Utils.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -24,7 +26,7 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
             int product_id = Integer.parseInt(row[3]);
             int quantity = Integer.parseInt(row[4]);
             double amount = Double.parseDouble(row[5]);
-            String invoiceDate = row[6];
+            Date invoiceDate = DateUtils.createFromFormat(row[6], "dd/MM/yyyy");
             String address = row[7];
             String city = row[8];
             int stockCode = Integer.parseInt(row[9]);
@@ -56,6 +58,11 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
             double valueInvoice2 = (double) invoice2.getPrimaryKeyValue();
 
             return CompareValue.compareDouble(valueInvoice, valueInvoice2);
+        }else if ( typePrimaryKey.equals(Date.class) ) {
+            Date valueInvoice = (Date) invoice.getPrimaryKeyValue();
+            Date valueInvoice2 = (Date) invoice2.getPrimaryKeyValue();
+
+            return CompareValue.compareDate(valueInvoice, valueInvoice2);
         }
 
         return 1;
