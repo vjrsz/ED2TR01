@@ -15,10 +15,10 @@ public class Main {
         Invoice[] invoices = InvoiceController.create(dataInvoices);
 
         MenuController.show();
-        int attributeChoice = MenuController.attributeChosen - 1;
-        int sorterChoice = MenuController.sorterChosen;
-        int orderByChoice = MenuController.orderByChosen;
+        int attributeChosen = MenuController.attributeChosen - 1;
+        int sorterChosen = MenuController.sorterChosen;
+        int orderByChosen = MenuController.orderByChosen;
 
-        InvoiceController.runSorter(invoices, attributeChoice, sorterChoice, orderByChoice);
+        InvoiceController.runSorter(invoices, attributeChosen, sorterChosen, orderByChosen);
     }
 }
