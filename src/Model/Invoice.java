@@ -1,12 +1,10 @@
 package Model;
 
-import Utils.DateUtils;
-
 import java.lang.reflect.Field;
 import java.util.Date;
 
 public class Invoice {
-    private String firstName;
+    private String firstName; // 0
     private String lastName;
     private String email;
     private int product_id;
@@ -16,7 +14,7 @@ public class Invoice {
     private String address;
     private String city;
     private int stockCode;
-    private String job;
+    private String job; // 10
     private static int primaryKey;
 
     public Invoice(String firstName, String lastName, String email, int product_id, int quantity, double amount,

@@ -42,6 +42,13 @@ public class TestMain {
     public static ArrayList<TestCaseSortInvoice> createTestCaseSortInvoice(){
         ArrayList<TestCaseSortInvoice> testCases = new ArrayList<TestCaseSortInvoice>();
         testCases.add(new TestCaseSortInvoice(0,1,1));
+        testCases.add(new TestCaseSortInvoice(0,1,2));
+        testCases.add(new TestCaseSortInvoice(3,1,1));
+        testCases.add(new TestCaseSortInvoice(3,1,2));
+        testCases.add(new TestCaseSortInvoice(5,1,1));
+        testCases.add(new TestCaseSortInvoice(5,1,2));
+        testCases.add(new TestCaseSortInvoice(6,1,1));
+        testCases.add(new TestCaseSortInvoice(6,1,2));
 
         return testCases;
     }
