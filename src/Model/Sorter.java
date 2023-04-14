@@ -2,7 +2,7 @@ package Model;
 
 import java.util.function.BiFunction;
 
-public abstract class Sorter <Type>{
+public abstract class Sorter <Type> {
     private Class<Type> type;
     protected Type[] list;
     protected int orderBy;

@@ -33,7 +33,6 @@ public class InvoiceController {
 
         CSVController.store(sorter.getList(), sorter.getName());
 
-
         //InvoiceView.show(sorter.getList());
         //InvoiceService.test(InvoiceService.bif, invoices);
     }

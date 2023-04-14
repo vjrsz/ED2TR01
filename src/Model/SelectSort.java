@@ -2,7 +2,7 @@ package Model;
 
 import java.util.function.BiFunction;
 
-public class SelectSort <Type> extends Sorter<Type>{
+public class SelectSort <Type> extends Sorter<Type> {
 
     public SelectSort() {
         super();

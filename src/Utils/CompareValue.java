@@ -3,7 +3,6 @@ package Utils;
 import java.util.Date;
 
 public class CompareValue {
-
     public static int compareString(String a, String b){
         int res = a.compareTo(b);
 

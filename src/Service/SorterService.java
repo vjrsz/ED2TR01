@@ -36,6 +36,10 @@ public class SorterService {
     public static Sorter getSorter(int choice) {
         Class<? extends Sorter> sorterClass = SorterService.sorters.get(choice);
 
+        if ( choice == 1 ){
+            return new SelectSort();
+        }
+
         try {
             Sorter sorter = sorterClass.getDeclaredConstructor().newInstance();
             return sorter;

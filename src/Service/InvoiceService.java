@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
-
     public static BiFunction<Invoice, Invoice, Integer> bif = new InvoiceService();
 
     public static Invoice[] createFromCSV(List<String[]> data){
@@ -51,6 +50,7 @@ public class InvoiceService implements BiFunction<Invoice, Invoice, Integer> {
         } else if ( typePrimaryKey.equals(Integer.class) ) {
             int valueInvoice = (int) invoice.getPrimaryKeyValue();
             int valueInvoice2 = (int) invoice2.getPrimaryKeyValue();
+
 
             return CompareValue.compareInteger(valueInvoice, valueInvoice2);
         } else if ( typePrimaryKey.equals(Double.class) ) {
