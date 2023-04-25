@@ -25,7 +25,17 @@ public class Main {
         Sorter sorter = SorterService.getSorter(sorterChosen);
         sorter.setList(segmentations);
         sorter.setOrderBy(orderByChosen);
+
+        long timeInit, timeEnd;
+
+        timeInit = System.currentTimeMillis();
         sorter.sort(SegmentationService.bif);
+        timeEnd = System.currentTimeMillis();
+
+        System.out.println("Sorter Finalized !");
+        System.out.println("- Time init : " + timeInit + "ms");
+        System.out.println("- Time end : " + timeEnd + "ms");
+        System.out.println("- Time total : " + (timeEnd - timeInit) + "ms");
 
         CSVWriteFile.write( (Segmentation[]) sorter.getList(),"csvsorted\\result.csv");
     }
