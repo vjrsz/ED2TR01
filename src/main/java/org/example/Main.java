@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String csvFile = "C:\\xampp\\htdocs\\ED2\\EDDOIS\\data\\customer_segmentation.csv";
+        String csvFile = "data\\customer_segmentation.csv";
         List<String[]> data = CSVReaderFile.read(csvFile); // ler csv
         Segmentation[] segmentations = SegmentationService.create(data); // cria instancias
 
