@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String csvFile = "data\\customer_segmentation.csv";
+        String csvFile = "C:\\xampp\\htdocs\\ED2\\EDDOIS\\data\\customer_segmentation.csv";
         List<String[]> data = CSVReaderFile.read(csvFile); // ler csv
         Segmentation[] segmentations = SegmentationService.create(data); // cria instancias
 
@@ -20,19 +20,23 @@ public class Main {
         int sorterChosen = MenuView.sorterChoice();
         int orderByChosen = MenuView.orderChoice();
 
-        Segmentation.setPrimaryKey(attributeChosen-1);
-
+        Segmentation.setPrimaryKey(attributeChosen);
 
         Sorter sorter = SorterService.getSorter(sorterChosen);
         sorter.setList(segmentations);
         sorter.setOrderBy(orderByChosen);
 
         long timeInit, timeEnd;
-        
+
         timeInit = System.currentTimeMillis();
         sorter.sort(SegmentationService.bif);
         timeEnd = System.currentTimeMillis();
-        System.out.println(timeEnd-timeInit);
+
+        System.out.println("Sorter Finalized !");
+        System.out.println("- Time init : " + timeInit + "ms");
+        System.out.println("- Time end : " + timeEnd + "ms");
+        System.out.println("- Time total : " + (timeEnd - timeInit) + "ms");
+
         CSVWriteFile.write( (Segmentation[]) sorter.getList(),"csvsorted\\result.csv");
     }
 }
