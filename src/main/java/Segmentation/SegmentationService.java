@@ -9,7 +9,7 @@ public class SegmentationService implements BiFunction<Segmentation, Segmentatio
 
     public static Segmentation[] create(List<String[]> data) {
         //int len = data.size();
-        int len = 100000;
+        int len = 400000;
 
         Segmentation[] segmentations = new Segmentation[len];
 

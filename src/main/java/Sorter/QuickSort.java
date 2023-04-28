@@ -26,7 +26,7 @@ public class QuickSort<Type> extends Sorter<Type> {
     }
 
     public int partition(Type[] list, int init, int end){
-        Type pivot = list[init];
+        Type pivot = list[init + (end - init)/2];
         int i = init + 1, e = end;
 
         while(i <= e){
