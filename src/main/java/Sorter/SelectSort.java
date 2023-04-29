@@ -1,5 +1,6 @@
 package Sorter;
 
+
 import java.util.function.BiFunction;
 
 public class SelectSort<Type> extends Sorter<Type>{
